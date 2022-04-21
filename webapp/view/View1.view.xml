@@ -1,0 +1,29 @@
+<mvc:View controllerName="uploadsetr15.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:upload="sap.m.upload">
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}" showFooter="true" floatingFooter="true" busy="{createView>/page/busy}" 
+                enableScrolling="true" showNavButton="true" navButtonPress=".onNavButtonPress">
+                    <content>
+                        <HBox id="idHbox">
+                            <Label id="idLbl" text="Product ID" class="sapUiTinyMarginTop"/>
+                            <Input id="idPrd" placeholder="Please give Product ID"></Input>
+                        </HBox>
+                        <upload:UploadSet id="UploadSet" instantUpload="true"  showIcons="true" visible="{createView>/page/editable}" 
+                        terminationEnabled="true" maxFileNameLength="55" beforeUploadStarts="onBeforeUploadStarts" uploadCompleted="onUploadCompleted" 
+                        class="sapUiResponsiveMargin" uploadUrl="/sap/opu/odata/sap/ZSHREE_PRODUCTS_SRV/attachmentsSet"/>
+                    </content>
+                    <footer>
+                        <OverflowToolbar id="idOverFlow">
+                            <ToolbarSpacer id="idSpacer"/>
+                            <Button id="idBtn" text="PlaceOrder" type="Emphasized" press="onUploadToDB" visible="{createView>/page/editable}"/>
+                        </OverflowToolbar>
+                    </footer>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>
